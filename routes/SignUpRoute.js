@@ -22,7 +22,7 @@ router.route("/changepassword").post(UpdatePassword);
 router.get("/stock/:symbol" , async (req, res) => {
   try {
     const symbol = req.params.symbol;
-    exec(`python -c "import yfinance as yf; ticker = yf.Ticker('${symbol}'); data = ticker.history(period='1d'); print(data.to_json())"`, (error, stdout, stderr) => {
+    exec(`python3 -c "import yfinance as yf; ticker = yf.Ticker('${symbol}'); data = ticker.history(period='1d'); print(data.to_json())"`, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing Python script: ${error.message}`);
         return res.status(500).json({ message: "Internal server error" });
@@ -60,7 +60,7 @@ router.get("/stock/:symbol/:timeframe" ,async (req, res) => {
   try {
     const symbol = req.params.symbol;
     const timeframe = req.params.timeframe;
-    exec(`python -c "import yfinance as yf; ticker = yf.Ticker('${symbol}'); data = ticker.history(period='${timeframe}'); print(data.to_json())"`, (error, stdout, stderr) => {
+    exec(`python3 -c "import yfinance as yf; ticker = yf.Ticker('${symbol}'); data = ticker.history(period='${timeframe}'); print(data.to_json())"`, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing Python script: ${error.message}`);
         return res.status(500).json({ message: "Internal server error" });
@@ -101,7 +101,7 @@ router.get("/stockdata/:symbol/cashflow",async (req, res) => {
   try {
     const symbol = req.params.symbol;
 
-    exec(`python -c "import yfinance as yf; ticker = yf.Ticker('${symbol}'); data = ticker.cashflow; print(data.to_json())"`, (error, stdout, stderr) => {
+    exec(`python3 -c "import yfinance as yf; ticker = yf.Ticker('${symbol}'); data = ticker.cashflow; print(data.to_json())"`, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing Python script: ${error.message}`);
         return res.status(500).json({ message: "Internal server error" });
@@ -139,7 +139,7 @@ router.get("/stockdata/:symbol/balancesheet",async (req, res) => {
   try {
     const symbol = req.params.symbol;
 
-    exec(`python -c "import yfinance as yf; ticker = yf.Ticker('${symbol}'); data = ticker.balance_sheet; print(data.to_json())"`, (error, stdout, stderr) => {
+    exec(`python3 -c "import yfinance as yf; ticker = yf.Ticker('${symbol}'); data = ticker.balance_sheet; print(data.to_json())"`, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing Python script: ${error.message}`);
         return res.status(500).json({ message: "Internal server error" });
