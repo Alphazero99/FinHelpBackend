@@ -1,10 +1,4 @@
-[build]
-commands = [
-  "apt-get update",
-  "apt-get install -y python3 python3-pip",
-  "pip3 install yfinance"
-]
 
-[service]
-name = "finhelp_backend"
-start = "node index.js"
+
+[env]
+PYTHON_VERSION = "3.8"
