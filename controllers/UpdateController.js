@@ -1,5 +1,5 @@
 import SignUpUser from "../models/SignupSchema.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export const UpdateUsername = async(req , res) => {
     try {
