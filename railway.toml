@@ -1,9 +1,0 @@
-
-
-
-[build]
-  command = "npm install && npm run build" 
-
-[env]
-PYTHON_VERSION = "3.7"  
-
